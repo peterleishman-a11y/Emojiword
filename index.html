@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>Emojiword</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <h1 class="logo">Emoji<span>word</span></h1>
+      <div class="mode-toggle" role="tablist" aria-label="Game mode">
+        <button id="mode-random" class="mode-btn active" role="tab" aria-selected="true">🎲 Random</button>
+        <button id="mode-two" class="mode-btn" role="tab" aria-selected="false">👯 Two Player</button>
+      </div>
+      <button id="reset-btn" class="reset-btn" aria-label="New game">🔄 New</button>
+    </header>
+
+    <!-- Two-player input screen (hidden by default) -->
+    <section id="p1-screen" class="screen hidden">
+      <h2>Player 1: type a secret phrase!</h2>
+      <p class="hint">Letters and spaces only. Player 2 will try to decode it.</p>
+      <input id="p1-input" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Type your phrase…" />
+      <div class="row">
+        <button id="p1-submit" class="big-btn">🔒 Encode it!</button>
+      </div>
+      <p id="p1-error" class="error" aria-live="polite"></p>
+    </section>
+
+    <!-- Game screen -->
+    <section id="game-screen" class="screen">
+      <div class="puzzle-card">
+        <div class="phrase-area" id="phrase-area" aria-label="Encoded phrase"></div>
+      </div>
+
+      <div class="key-card">
+        <div class="key-title">🔑 Emoji Key</div>
+        <div class="key-grid" id="key-grid" aria-label="Emoji to letter key"></div>
+      </div>
+
+      <div class="keyboard" id="keyboard" aria-label="Letter keyboard"></div>
+    </section>
+
+    <!-- Win overlay -->
+    <div id="win-overlay" class="overlay hidden" role="dialog" aria-live="polite">
+      <div class="win-card">
+        <div class="confetti">🎉🌟🎉</div>
+        <h2 class="win-title">Well done!!!</h2>
+        <p class="win-phrase" id="win-phrase"></p>
+        <button id="win-next" class="big-btn">▶️ Play Again</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="phrases.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
